@@ -1,132 +1,389 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Untitled</title>
-  
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Cutting Input Area Andon System</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin: 40px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md. Ariful Islam - Industrial Engineering Professional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007BFF; /* Blue */
+            --secondary-color: #0056b3; /* Dark Blue */
+            --accent-color: #ffdd57; /* Yellow */
+            --background-light: #f0f2f5; /* Light Gray */
+            --background-dark: #1a1a1a; /* Dark Gray */
+            --text-light: #333; /* Dark Text */
+            --text-dark: #f0f0f0; /* Light Text */
+            --card-bg-light: rgba(255, 255, 255, 0.9); /* White with Opacity */
+            --card-bg-dark: rgba(45, 45, 45, 0.9); /* Dark with Opacity */
+        }
 
-    h1 {
-      margin: 5px 0;
-    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-light);
+            color: var(--text-light);
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+        body.dark-mode {
+            background-color: var(--background-dark);
+            color: var(--text-dark);
+        }
 
-    .line {
-      width: 60px;
-      margin: 10px;
-      text-align: center;
-    }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)),
+                        url('https://via.placeholder.com/1920x600'); /* Add a background image */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 150px 20px;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .label {
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Overlay for better text visibility */
+            pointer-events: none;
+        }
 
-    .indicator {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      margin: 0 auto;
-    }
+        .hero h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
 
-    .green {
-      background-color: green;
-    }
+        .hero p {
+            font-size: 20px;
+            margin: 10px 0 0;
+            position: relative;
+            z-index: 1;
+        }
 
-    .red {
-      background-color: red;
-      animation: pulse 1s infinite;
-    }
+        .hero .cta-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: var(--accent-color);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background 0.3s, transform 0.3s;
+        }
 
-    .yellow {
-      background-color: yellow;
-      box-shadow: 0 0 15px gold;
-      animation: pulse 1.5s infinite;
-    }
+        .hero .cta-button:hover {
+            background: #ffc107;
+            transform: translateY(-3px);
+        }
 
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      50% {
-        transform: scale(1.2);
-        opacity: 0.8;
-      }
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-  </style>
+        /* Navigation Bar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .navbar ul li {
+            display: inline;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Sections */
+        .section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 40px 20px;
+            background: var(--card-bg-light);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            transition: background 0.3s;
+        }
+
+        body.dark-mode .section {
+            background: var(--card-bg-dark);
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            font-size: 32px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h2 i {
+            font-size: 36px;
+        }
+
+        /* Cards */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg-light);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 5px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(0, 86, 179, 0.1));
+            z-index: -1;
+            transition: opacity 0.3s;
+            opacity: 0;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            font-size: 22px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h3 i {
+            font-size: 24px;
+        }
+
+        .card p {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        body.dark-mode .card p {
+            color: var(--text-dark);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--primary-color);
+            color: white;
+            margin-top: 40px;
+        }
+
+        footer .social-links {
+            margin-bottom: 20px;
+        }
+
+        footer .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        footer .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 <body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Md. Ariful Islam</h1>
+        <p>Industrial Engineering Professional</p>
+        <a href="#contact" class="cta-button">Contact Me</a>
+    </div>
 
-  <div><strong>Raiyan Knit Composite Ltd.</strong></div>
-  <h1>Supermarket Input Area Andon System</h1>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#summary">Summary</a></li>
+            <li><a href="#expertise">Expertise</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-  <div class="container">
-    <!-- Line 1 to 16 -->
-    <div class="line"><div class="label">Line 1</div><div class="indicator red"></div></div>
-    <div class="line"><div class="label">Line 2</div><div class="indicator red"></div></div>
-    <div class="line"><div class="label">Line 3</div><div class="indicator red"></div></div>
-    <div class="line"><div class="label">Line 4</div><div class="indicator red"></div></div>
-    <div class="line"><div class="label">Line 5</div><div class="indicator red"></div></div>
-    <div class="line"><div class="label">Line 6</div><div class="indicator red"></div></div>
-    <div class="line"><div class="label">Line 7</div><div class="indicator green"></div></div>
-    <div class="line"><div class="label">Line 8</div><div class="indicator green"></div></div>
-    <div class="line"><div class="label">Line 9</div><div class="indicator green"></div></div>
-    <div class="line"><div class="label">Line 10</div><div class="indicator yellow"></div></div>
-    <div class="line"><div class="label">Line 11</div><div class="indicator green"></div></div>
-    <div class="line"><div class="label">Line 12</div><div class="indicator green"></div></div>
-    <div class="line"><div class="label">Line 13</div><div class="indicator green"></div></div>
-    <div class="line"><div class="label">Line 14</div><div class="indicator green"></div></div>
-    <div class="line"><div class="label">Line 15</div><div class="indicator green"></div></div>
-    <div class="line"><div class="label">Line 16</div><div class="indicator green"></div></div>
+    <!-- Career Summary -->
+    <div id="summary" class="section summary-section">
+        <h2><i class="fas fa-user-tie"></i>Career Summary</h2>
+        <p>
+            Accomplished Industrial Engineering professional with a decade of hands-on experience in the garments manufacturing industry. Holds a <strong>Bachelor of Science (BSc) in Industrial and Production Engineering (IPE)</strong> from Jessore University of Science and Technology (JUST), an <strong>MBA in Accounting and Information Systems (AIS)</strong> from Jahangirnagar University (JU), and a <strong>Postgraduate Diploma (PGD) in Garments Business</strong> from IBA, Dhaka University. Proven expertise in process optimization, cost reduction, and strategic planning, complemented by strong proficiency in engineering and professional software tools.
+        </p>
+    </div>
 
-    <!-- Line 17 to 32 -->
-    <div class="line"><div class="label">Line 17</div><div class="indicator red"></div></div>
-    <div class="line"><div class="label">Line 18</div><div class="indicator red"></div></div>
-    <div class="line"><div class="label">Line 19</div><div class="indicator red"></div></div>
-    <div class="line"><div class="label">Line 20</div><div class="indicator red"></div></div>
-    <div class="line"><div class="label">Line 21</div><div class="indicator red"></div></div>
-    <div class="line"><div class="label">Line 22</div><div class="indicator green"></div></div>
-    <div class="line"><div class="label">Line 23</div><div class="indicator green"></div></div>
-    <div class="line"><div class="label">Line 24</div><div class="indicator green"></div></div>
-    <div class="line"><div class="label">Line 25</div><div class="indicator red"></div></div>
-    <div class="line"><div class="label">Line 26</div><div class="indicator green"></div></div>
-    <div class="line"><div class="label">Line 27</div><div class="indicator green"></div></div>
-    <div class="line"><div class="label">Line 28</div><div class="indicator green"></div></div>
-    <div class="line"><div class="label">Line 29</div><div class="indicator green"></div></div>
-    <div class="line"><div class="label">Line 30</div><div class="indicator yellow"></div></div>
-    <div class="line"><div class="label">Line 31</div><div class="indicator green"></div></div>
-    <div class="line"><div class="label">Line 32</div><div class="indicator green"></div></div>
-  </div>
+    <!-- Expertise -->
+    <div id="expertise" class="section expertise-section">
+        <h2><i class="fas fa-tools"></i>Expertise</h2>
+        <ul>
+            <li>Production Process Optimization</li>
+            <li>Expert Cost Reduction & Waste Management</li>
+            <li>Operational Efficiency Improvement</li>
+            <li>GSD & PMTS Implementation</li>
+            <li>Advanced Machine Planning & Layout Design</li>
+            <li>Value Stream Mapping (VSM) & Non-Value-Added (NVA) Control</li>
+            <li>Resource Utilization & Productivity Enhancement</li>
+            <li>Strong Analytical & Problem-Solving Skills</li>
+            <li>Cost-Profit Financial Strategy</li>
+            <li>Quick Changeover (QCO) Management</li>
+            <li>Learning Curve Achievement</li>
+            <li>Key Performance Indicator (KPI) Leadership</li>
+            <li>Machine Automation & Process Reengineering</li>
+        </ul>
+    </div>
 
-</body>
-</html>
-<!-- partial -->
-  
+    <!-- Achievements -->
+    <div id="achievements" class="section">
+        <h2><i class="fas fa-trophy"></i>Achievements</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3><i class="fas fa-chart-line"></i>Increased Production Efficiency</h3>
+                <p>Optimized production workflows and resource allocation, leading to a 15% increase in overall efficiency while reducing operational bottlenecks.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-dollar-sign"></i>Cost Reduction & Waste Minimization</h3>
+                <p>Implemented lean manufacturing principles and Value Stream Mapping, reducing non-value-added activities and achieving a 20% reduction in material waste and 12% cost savings while increasing profit margins by 10%.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-tachometer-alt"></i>Bottleneck Identification & Risk Mitigation</h3>
+                <p>Led data-driven problem-solving initiatives, reducing downtime by 30% and improving overall production flow by 35%.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-users"></i>Workforce Development & Leadership</h3>
+                <p>Managed a workforce of 500+ employees, enhancing productivity through structured training programs and performance monitoring.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-cogs"></i>Industrial Engineering & Process Improvement</h3>
+                <p>Led the Industrial Engineering (IE) department, introducing automation and smart manufacturing tools that decreased handling time and labor dependency by 7%.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-project-diagram"></i>Optimized Floor Layouts</h3>
+                <p>Designed and executed new production floor layouts, improving workflow and reducing unnecessary movement, leading to a 22% increase in space utilization.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-database"></i>Data-Driven Decision Making</h3>
+                <p>Developed and executed advanced production plans based on KPI analysis, increasing forecast accuracy and ensuring on-time delivery rate improvement from 85% to 98%+.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-sync-alt"></i>Faster Changeover, Risk Management & Issue Resolution</h3>
+                <p>Led QCO (Quick Changeover), reducing changeover times by 35%, resulting in increased uptime and smoother production transitions. Proactively identified and resolved production bottlenecks, reducing downtime by 40% and enhancing operational stability.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact -->
+    <div id="contact" class="section contact-section">
+        <h2><i class="fas fa-envelope"></i>Contact Me</h2>
+        <p>If you'd like to connect or discuss potential opportunities, feel free to reach out:</p>
+        <p>Email: <a href="mailto:ipe.arif@yahoo.com">ipe.arif@yahoo.com</a></p>
+        <p>Mobile: <a href="https://www.linkedin.com/in/ariful-islam" target="_blank"> 01763-063737</a></p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+         
+            <a href="mailto:ariful.islam@example.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p>&copy; 2025 Md. Ariful Islam | All Rights Reserved</p>
+    </footer>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const themeToggle = document.querySelector('.theme-toggle i');
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggle.classList.remove('fa-moon');
+                themeToggle.classList.add('fa-sun');
+            } else {
+                themeToggle.classList.remove('fa-sun');
+                themeToggle.classList.add('fa-moon');
+            }
+        }
+    </script>
 </body>
 </html>
